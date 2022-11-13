@@ -2,7 +2,6 @@ const foodTruckService = require('../services/food_truck.service');
 const NodeGeocoder = require('node-geocoder');
 const createEvent = async (req, res) => {
     try{
-        console.log(req.body);
         const foodTruck = await foodTruckService.createEvent(req.body);
         if(foodTruck.success){
             res.status(200).send(foodTruck);
