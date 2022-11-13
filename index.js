@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const body = require("body-parser")
 const passport = require('passport')
 app.use(body.urlencoded({ extended: true }))
@@ -9,6 +10,9 @@ const session = require('express-session')
 const config = require('./config/config.json');
 const MongoStore = require('connect-mongo')(session)
 require('./config/passport')(passport)
+app.use(cors({
+    credentials: true
+}))
 mongoose.connect(config.connectionString, { useNewUrlParser: true })
 app.use(
     session({

@@ -1,6 +1,6 @@
 const express = require('express')
 const passport = require('passport')
-const { ensureAuth, ensureGuest } = require('../controller/oath.controller')
+const { ensureAuth, ensureGuest } = require('../middleware/oauth')
 const router = express.Router()
 
 
@@ -17,10 +17,10 @@ router.get(
 
 router.get('/logout', (req, res) => {
     req.logout((err) => {
-        if(err){
+        if (err) {
             return next(err);
         }
-        res.redirect('/')        
+        res.redirect('/')
     })
 })
 
