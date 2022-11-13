@@ -11,6 +11,7 @@ const config = require('./config/config.json');
 const MongoStore = require('connect-mongo')(session)
 require('./config/passport')(passport)
 app.use(cors({
+  origin: 'http://localhost:5173',
     credentials: true
 }))
 mongoose.connect(config.connectionString, { useNewUrlParser: true })

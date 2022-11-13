@@ -11,7 +11,7 @@ router.get(
     '/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
-        res.redirect('/profile')
+        res.redirect('http://localhost:5173/')
     }
 )
 
@@ -20,7 +20,7 @@ router.get('/logout', (req, res) => {
         if (err) {
             return next(err);
         }
-        res.redirect('/')
+        res.redirect('http://localhost:5173/')
     })
 })
 
@@ -30,5 +30,9 @@ router.get('/', ensureGuest, (req, res) => {
 
 router.get("/profile", ensureAuth, async (req, res) => {
     res.render('index', { userinfo: req.user })
+})
+
+router.get('/get-user', ensureAuth, async(req, res) => {
+  res.send(req.user)
 })
 module.exports = router

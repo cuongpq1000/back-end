@@ -10,7 +10,7 @@ router.get(
     '/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
-        res.redirect('/profile')
+        res.redirect('http://localhost:5173')
     }
 )
 
